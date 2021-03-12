@@ -1,0 +1,19 @@
+
+spring:
+  application:
+    name: eureka-client02
+
+server:
+  port: 8084
+
+eureka:
+  instance:
+    hostname: host04
+    prefer-ip-address: false
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/,http://eureka03:7003/eureka/

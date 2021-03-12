@@ -1,0 +1,64 @@
+
+---
+spring:
+  profiles: 7001
+  application:
+    name: eureka-server
+
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka01
+    prefer-ip-address: false
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
+
+
+---
+spring:
+  profiles: 7002
+  application:
+    name: eureka-server
+
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: eureka02
+    prefer-ip-address: false
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka01:7001/eureka/,http://eureka03:7003/eureka/
+
+---
+spring:
+  profiles: 7003
+  application:
+    name: eureka-server
+
+server:
+  port: 7003
+
+eureka:
+  instance:
+    hostname: eureka03
+    prefer-ip-address: false
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/
