@@ -4,9 +4,18 @@ spring:
   profiles: 7001
   application:
     name: eureka-server
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8001
 
 server:
   port: 7001
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
+    accept-count: 100
 
 eureka:
   instance:
@@ -19,16 +28,36 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
-
+  server:
+    response-cache-update-interval-ms: 100 #eureka server刷新readCacheMap的时间，注意，client读取的是readCacheMap，这个时间决定了多久会把readWriteCacheMap的缓存更新到readCacheMap上
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
 
 ---
 spring:
   profiles: 7002
   application:
     name: eureka-server
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8001
 
 server:
   port: 7002
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
+    accept-count: 100
 
 eureka:
   instance:
@@ -42,14 +71,33 @@ eureka:
     service-url:
       defaultZone: http://eureka01:7001/eureka/,http://eureka03:7003/eureka/
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
 ---
 spring:
   profiles: 7003
   application:
     name: eureka-server
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8001
 
 server:
   port: 7003
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
+    accept-count: 100
 
 eureka:
   instance:
@@ -62,3 +110,14 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true

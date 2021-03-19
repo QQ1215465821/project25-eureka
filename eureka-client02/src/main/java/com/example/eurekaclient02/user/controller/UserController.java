@@ -1,6 +1,7 @@
 package com.example.eurekaclient02.user.controller;
 
 import com.example.eurekaclient02.user.entity.User;
+import com.example.eurekaclient02.user.service.RemoteUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -25,6 +26,8 @@ public class UserController {
     private LoadBalancerClient loadBalancerClient;
     @Autowired
     private DiscoveryClient discoveryClient;
+    @Autowired
+    private RemoteUserService remoteUserService;
 
     @GetMapping("/userList")
     public List<User> userList(){
@@ -44,6 +47,12 @@ public class UserController {
         List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances("EUREKA-CLIENT01");
         ServiceInstance serviceInstance = serviceInstanceList.get(0);
         List<User> userList = new RestTemplate().getForObject("http://"+serviceInstance.getHost()+":"+serviceInstance.getPort()+"/userList", List.class);
+        return userList;
+    }
+
+    @GetMapping("/userList4")
+    public List<User> userList4(){
+        List<User> userList = remoteUserService.userList();
         return userList;
     }
 }

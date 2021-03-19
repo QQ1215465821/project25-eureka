@@ -1,53 +1,20 @@
 
+# -Dserver.port=8081 -Deureka.instance.hostname=host01
 spring:
-  profiles: 8081
   application:
     name: eureka-client01
-
-server:
-  port: 8081
-
-eureka:
-  instance:
-    hostname: host01
-    prefer-ip-address: false
-    instance-id: ${eureka.instance.hostname}:${server.port}
-  client:
-    registry-fetch-interval-seconds: 5
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
-
----
-spring:
-  profiles: 8082
-  application:
-    name: eureka-client01
-
-server:
-  port: 8082
-
-eureka:
-  instance:
-    hostname: host02
-    prefer-ip-address: false
-    instance-id: ${eureka.instance.hostname}:${server.port}
-  client:
-    registry-fetch-interval-seconds: 5
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
-
----
-spring:
-  profiles: 8083
-  application:
-    name: eureka-client01
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8001
 
 server:
   port: 8083
+  tomcat:
+    threads:
+      max: 10
+    max-connections: 8192
+    accept-count: 100
 
 eureka:
   instance:
@@ -60,3 +27,14 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true

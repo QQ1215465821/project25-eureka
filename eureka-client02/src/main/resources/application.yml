@@ -2,9 +2,19 @@
 spring:
   application:
     name: eureka-client02
-
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8001
 server:
   port: 8084
+  compression:
+    enabled: true
+  tomcat:
+    threads:
+      max: 200
+    max-connections: 8192
+    accept-count: 100
 
 eureka:
   instance:
@@ -12,8 +22,42 @@ eureka:
     prefer-ip-address: false
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
-    registry-fetch-interval-seconds: 5
+    registry-fetch-interval-seconds: 1 #指示从eureka *服务器获取注册表信息的频率（以秒为单位）
     register-with-eureka: false
     fetch-registry: true
     service-url:
       defaultZone: http://eureka01:7001/eureka/,http://eureka02:7002/eureka/,http://eureka03:7003/eureka/
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+      useGzipDecoder: true
+  client:
+    config:
+      default:
+        connect-timeout: 10000
+        read-timeout: 10000
+        requestInterceptors:
+          - org.springframework.cloud.openfeign.encoding.FeignAcceptGzipEncodingInterceptor
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+
+ribbon:
+  ServerListRefreshInterval: 1 #默认30s,单位毫秒
+#  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+#  ReadTimeout: 600000    #负载均衡超时时间，默认值5000
+#  ConnectTimeout: 600000 #ribbon请求连接的超时时间，默认值2000
+#  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+#  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
