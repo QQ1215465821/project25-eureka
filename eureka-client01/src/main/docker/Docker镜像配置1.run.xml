@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Docker镜像配置1" type="docker-deploy" factoryName="docker-image" server-name="Docker">
+    <deployment type="docker-image">
+      <settings>
+        <option name="imageTag" value="lam/eureka-client01:latest" />
+        <option name="command" value="--server.port=8081 --eureka.instance.hostname=host01" />
+        <option name="containerName" value="eureka-client-8081" />
+        <option name="entrypoint" value="" />
+        <option name="commandLineOptions" value="-it -p 8081:8081" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

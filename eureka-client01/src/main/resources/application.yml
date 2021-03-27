@@ -9,7 +9,7 @@ spring:
         url: http://127.0.0.1:8001
 
 server:
-  port: 8083
+  port: 8081
   tomcat:
     threads:
       max: 10
@@ -18,7 +18,7 @@ server:
 
 eureka:
   instance:
-    hostname: host03
+    hostname: host01
     prefer-ip-address: false
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:

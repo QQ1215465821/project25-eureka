@@ -72,6 +72,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>eureka-client01</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -98,6 +99,28 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+                <configuration>
+                    <!-- 远程docker地址 -->
+                    <dockerHost>http://localhost:2375</dockerHost>
+                    <imageName>lam/${project.artifactId}</imageName><!--lam/docker01-->
+                    <dockerDirectory>src/main/docker</dockerDirectory><!--D:\Java\IntelliJ IDEA Enterprise\wk3\docker01/src/main/docker-->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory><!--D:\Java\IntelliJ IDEA Enterprise\wk3\docker01/target-->
+                            <include>${project.build.finalName}.jar</include><!--${project.artifactId}-${project.version}.jar-->
+                        </resource>
+                    </resources>
+                    <registryUrl>registry.cn-hangzhou.aliyuncs.com/namespace_liupeng/repository01</registryUrl>
+                    <retryPushCount>1</retryPushCount>
+                    <retryPushTimeout>1000</retryPushTimeout>
+                    <forceTags>true</forceTags>
+                </configuration>
             </plugin>
         </plugins>
     </build>

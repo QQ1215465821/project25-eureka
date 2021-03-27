@@ -7,7 +7,7 @@ spring:
       client:
         url: http://127.0.0.1:8001
 server:
-  port: 8084
+  port: 9001
   compression:
     enabled: true
   tomcat:

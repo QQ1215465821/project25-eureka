@@ -22,6 +22,8 @@ eureka:
     hostname: eureka01
     prefer-ip-address: false
     instance-id: ${eureka.instance.hostname}:${server.port}
+    # ip-address: 公网地址
+    # return this.preferIpAddress ? this.ipAddress : this.hostname;
   client:
     registry-fetch-interval-seconds: 5
     register-with-eureka: true

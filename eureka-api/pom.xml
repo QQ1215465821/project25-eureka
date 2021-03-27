@@ -9,7 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <version>1.0-SNAPSHOT</version>
     <artifactId>eureka-api</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -19,5 +21,11 @@
         </dependency>
     </dependencies>
 
-
+    <distributionManagement>
+        <repository>
+            <id>rdc-snapshots</id>
+            <name>releases</name>
+            <url>https://packages.aliyun.com/maven/repository/2017845-snapshot-FAlELO/</url>
+        </repository>
+    </distributionManagement>
 </project>
