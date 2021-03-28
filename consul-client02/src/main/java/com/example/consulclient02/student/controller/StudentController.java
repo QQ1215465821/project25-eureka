@@ -5,9 +5,7 @@ import org.example.student.Student;
 import org.example.student.StudentApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 刘鹏
@@ -31,4 +29,9 @@ public class StudentController {
     /*
     host01,8081, http-nio-8081-exec-5,57,java.lang.ThreadGroup[name=main,maxpri=10]
      */
+    @PostMapping("/addStudent")
+    public Student addStudent(@RequestBody Student student){
+        System.out.println("消费者," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup());
+        return studentServiceFeign.addStudent(student);
+    }
 }

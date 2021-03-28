@@ -20,7 +20,7 @@ public class StudentController implements StudentApi {
 
     @Override
     public String getStudent(String id){
-        int a = 1/0;
+//        int a = 1/0;
         String str = hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup();
         System.out.println("生产者:"+ str);
 //        try {
