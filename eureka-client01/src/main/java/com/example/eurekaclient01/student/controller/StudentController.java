@@ -1,4 +1,4 @@
-package com.example.eurekaclient01.user.controller;
+package com.example.eurekaclient01.student.controller;
 
 import org.example.student.Student;
 import org.example.student.StudentApi;
@@ -22,13 +22,14 @@ public class StudentController implements StudentApi {
 
     @Override
     public String getStudent(String id){
-        System.out.println(hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup());
-        try {
-            Thread.sleep(1000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return id;
+        String str = hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup();
+        System.out.println("生产者:"+ str);
+//        try {
+//            Thread.sleep(1000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return str;
     }
     /*
     host01,8081, http-nio-8081-exec-5,57,java.lang.ThreadGroup[name=main,maxpri=10]
