@@ -5,10 +5,11 @@ spring:
     name: consul-client01
   cloud:
     consul:
-      host: localhost
-      port: 8501
+      host: localhost # consul的客户端地址
+      port: 8500      # consul的客户端端口
       discovery:
         hostname: host01
+        instance-id: ${spring.application.name}-${server.port}-instance-id
 #        prefer-ip-address: true
 
 management:

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * @author 刘鹏
  * @Description
@@ -22,7 +24,7 @@ public class StudentController implements StudentApi {
 
     @Override
     public String getStudent(String id){
-        String str = hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup();
+        String str = "["+new Date().toLocaleString() +"]" + hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup();
         System.out.println("生产者:"+ str);
 //        try {
 //            Thread.sleep(1000L);

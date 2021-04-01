@@ -10,11 +10,16 @@ spring:
 
 server:
   port: 8081
+  compression:
+    enabled: true
   tomcat:
     threads:
-      max: 10
-    max-connections: 8192
-    accept-count: 100
+      max: 3
+      min-spare: 1
+    max-connections: 20
+    accept-count: 10
+
+
 
 eureka:
   instance:

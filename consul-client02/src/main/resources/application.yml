@@ -5,15 +5,16 @@ spring:
     name: consul-client02
   cloud:
     consul:
-      host: localhost
-      port: 8501
+      host: localhost # consul的客户端地址
+      port: 8500      # consul的客户端端口
       discovery:
-        hostname: host01
-#        prefer-ip-address: true
+        hostname: host04
+        instance-id: ${spring.application.name}-${server.port}-instance-id
+  #        prefer-ip-address: true
   boot:
     admin:
       client:
-        url: http://127.0.0.1:8001
+        url: http://127.0.0.1:8001 # admin-server的地址
 management:
   endpoint:
     health:
