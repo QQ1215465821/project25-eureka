@@ -6,7 +6,6 @@ spring:
     admin:
       client:
         url: http://127.0.0.1:8001
-  cloud:
 server:
   port: 9001
   compression:
