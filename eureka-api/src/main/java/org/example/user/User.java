@@ -1,4 +1,4 @@
-package com.example.eurekaclient02.user.entity;
+package org.example.user;
 
 /**
  * @author 刘鹏
@@ -31,5 +31,13 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

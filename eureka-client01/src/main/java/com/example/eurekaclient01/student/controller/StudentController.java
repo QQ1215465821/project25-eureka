@@ -26,11 +26,11 @@ public class StudentController implements StudentApi {
     public String getStudent(String id){
         String str = "["+new Date().toLocaleString() +"]" + hostName + "," + port + ", "+Thread.currentThread().getName() + "," + Thread.currentThread().getId()  + "," + Thread.currentThread().getThreadGroup();
         System.out.println("生产者:"+ str);
-//        try {
-//            Thread.sleep(1000L);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(5000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return str;
     }
     /*

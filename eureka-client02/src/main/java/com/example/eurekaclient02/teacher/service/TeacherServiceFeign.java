@@ -1,6 +1,6 @@
-package com.example.eurekaclient02.user.service;
+package com.example.eurekaclient02.teacher.service;
 
-import com.example.eurekaclient02.user.entity.User;
+import com.example.eurekaclient02.teacher.entity.Teacher;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,9 +12,9 @@ import java.util.List;
  * @date 2021-03-15 14:22
  */
 @FeignClient(value = "eureka-client01", contextId = "RemoteUserService")
-public interface RemoteUserService {
+public interface TeacherServiceFeign {
 
-    @GetMapping("/userList")
-    List<User> userList();
+    @GetMapping("/teacherList")
+    List<Teacher> teacherList();
 
 }

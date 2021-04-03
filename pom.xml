@@ -11,6 +11,9 @@
     <modules>
         <module>eureka-api</module>
         <module>admin-server</module>
+        <module>eureka-server</module>
+        <module>eureka-client01</module>
+        <module>eureka-client02</module>
     </modules>
 
 

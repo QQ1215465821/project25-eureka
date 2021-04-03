@@ -14,7 +14,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://127.0.0.1:8001 # admin-server的地址
+        url: http://127.0.0.1:6001 # admin-server的地址
 management:
   endpoint:
     health:

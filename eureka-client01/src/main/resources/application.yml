@@ -6,7 +6,9 @@ spring:
   boot:
     admin:
       client:
-        url: http://127.0.0.1:8001
+        url: http://127.0.0.1:6001
+        instance:
+          prefer-ip: true
 
 server:
   port: 8081

@@ -5,7 +5,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://127.0.0.1:8001
+        url: http://127.0.0.1:6001
 server:
   port: 9001
   compression:
@@ -71,7 +71,7 @@ management:
 ribbon:
   ServerListRefreshInterval: 1 #默认30s,单位毫秒
 #  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
-  ReadTimeout: 5000    #负载均衡超时时间，默认值5000,httpClient默认值1000，新版本的ribbon自动启动的HTTPClient
+  ReadTimeout: 10000    #负载均衡超时时间，默认值5000,httpClient默认值1000，新版本的ribbon自动启动的HTTPClient
   ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000,httpClient默认值1000
 #  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
 #  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1 备注：ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1);
