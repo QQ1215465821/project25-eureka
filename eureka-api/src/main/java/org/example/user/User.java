@@ -1,11 +1,13 @@
 package org.example.user;
 
+import java.io.Serializable;
+
 /**
  * @author 刘鹏
  * @Description
  * @date 2021-03-12 10:26
  */
-public class User {
+public class User implements Serializable {
     private String name;
     private Integer age;
 

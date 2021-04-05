@@ -6,6 +6,8 @@ spring:
     admin:
       client:
         url: http://127.0.0.1:6001
+        instance:
+          prefer-ip: true
 server:
   port: 9001
   compression:
@@ -55,7 +57,7 @@ hystrix:
         isolation:
           strategy: SEMAPHORE # 配置隔离策略获取request
           thread:
-            timeoutInMilliseconds: 600000 #断路器超时时间，默认1000ms
+            timeoutInMilliseconds: 60000 #断路器超时时间，默认1000ms
 
 management:
   endpoints:
@@ -74,4 +76,4 @@ ribbon:
   ReadTimeout: 10000    #负载均衡超时时间，默认值5000,httpClient默认值1000，新版本的ribbon自动启动的HTTPClient
   ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000,httpClient默认值1000
 #  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
-#  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1 备注：ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1);
+  MaxAutoRetriesNextServer: 0 #对切换实例的重试次数，默认1 备注：ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1);

@@ -3,6 +3,8 @@ package org.example.user;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 /**
  * @author 刘鹏
  * @Description
@@ -11,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface UserApi {
 
     @GetMapping("/user/{id}")
-    User getUser(@PathVariable("id") String id);
+    User getUser(@PathVariable("id") String id) ;
 
-//    @GetMapping("/userList/{ids}")
-//    List<User> getUserList(@PathVariable("ids") List<String> ids);
+    @GetMapping("/userList/{ids}")
+    List<User> getUserList(@PathVariable("ids") List<String> ids);
 
 }
